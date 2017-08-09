@@ -21,7 +21,7 @@ public class Tarea3 {
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion;
-        
+                
         while(!salir){
             System.out.println("\nTarea 3\n");
             System.out.println("200915624\n");
@@ -37,6 +37,7 @@ public class Tarea3 {
                     Scanner sn1 = new Scanner(System.in);
                     int opcion1;
                     boolean salir1 = false;
+                    Vector<String> usuario = new Vector<String>(5);
                     
                     while(!salir1){
                         System.out.println("Menú de Usuarios\n");
@@ -53,9 +54,7 @@ public class Tarea3 {
                             case 1:
                                 Scanner sn11 = new Scanner(System.in);
                                 String nombre;
-                                
-                                Vector<String> usuario = new Vector<>(5);
-                                System.out.println("Ingresar Usuarios");
+                                System.out.println("Ingresar 5 Usuarios");
                                 for (int j=0; j<5; j++){
                                     nombre = sn11.nextLine();
                                     usuario.add(nombre);
@@ -63,12 +62,30 @@ public class Tarea3 {
                                 break;
                             case 2:
                                 System.out.println("Mostrar todos los usuarios\n");
-                                /*for(int k=0; k < usuario.size(); k++){
-                                System.out.print((k+1) +". " +usuario.get(k));
-                                } */
+                                for (int k = 0; k < usuario.size(); k++) {
+                                    System.out.println((k+1) + ". " +usuario.get(k));
+                                }
+                                System.out.println(" ");
                                 break;
                             case 3:
-                                System.out.println("Mostrar usuario personalizado\n");
+                                Scanner sn13 = new Scanner(System.in);
+                                String nombre3;
+                                boolean existe = false;
+                                
+                                System.out.println("Mostrar usuario personalizado");
+                                System.out.println("Ingrese nombre");
+                                nombre3 = sn13.nextLine();
+                                for (int h = 0; h < usuario.size(); h++) {
+                                    if(nombre3.equals(usuario.get(h))){
+                                        System.out.println("-- Usuario --");
+                                        System.out.println(usuario.get(h) +"\n");
+                                        existe = true;
+                                    } 
+                                }    
+                                if(existe == false) {
+                                    System.out.println("-- Usuario --");
+                                    System.out.println("ERROR: No existe ese usuario en base de datos.\n");
+                                }
                                 break;
                             case 4:
                                 salir1 = true;
@@ -115,7 +132,7 @@ public class Tarea3 {
                     }
                     break;
                 case 3:
-                   salir=true;
+                   salir = true;
                    break;
                 default:
                    System.out.println("Ingrese un número entre 1 y 3");
